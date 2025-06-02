@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import ThemeToggle from './ThemeToggle';
 
 function ThemeContainer() {
   const [theme, setTheme] = useState('light');
 
   const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'Dark' : 'Light');
+    setTheme(theme === 'light' ? 'dark' : 'light');
   };
 
   return (
