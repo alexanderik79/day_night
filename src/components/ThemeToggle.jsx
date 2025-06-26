@@ -1,9 +1,26 @@
-function ThemeToggle({ theme, toggleTheme }) {
+// src/components/ThemeToggle.jsx
+import { useSelector, useDispatch } from 'react-redux'; // Импортируем хуки
+import { toggleTheme, selectCurrentTheme } from '../features/theme/themeSlice'; // Импортируем экшен и селектор
+
+function ThemeToggle() {
+  // Получаем текущую тему из Redux стора
+  const theme = useSelector(selectCurrentTheme);
+  // Получаем функцию dispatch для отправки экшенов
+  const dispatch = useDispatch();
+
+  // Обработчик нажатия кнопки, который отправляет экшен toggleTheme
+  const handleToggle = () => {
+    dispatch(toggleTheme());
+  };
+
   return (
     <>
-      <h1>Theme Switcher</h1>
-      <button onClick={toggleTheme}> {theme === 'light' ? 'Dark' : 'Light'} Mode </button>
+      <h2>Theme Toggle</h2>
+      <button onClick={handleToggle}>
+        {theme === 'light' ? 'Dark' : 'Light'} theme
+      </button>
     </>
   );
 }
+
 export default ThemeToggle;
